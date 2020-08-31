@@ -1,15 +1,19 @@
+// Quering the canvas and definte its type
 const cnvs = document.querySelector(".cnvs");
 const ctx = cnvs.getContext("2d");
 
+//Deine canvas width & Height
 cnvs.width = window.innerWidth;
 cnvs.height = window.innerHeight;
 
 // utility Function
 
+// Randomize Integer Numbers depend on maximum and minimum value
 const randomNumFromRange = (min, max) => {
 	return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
+// Randomizing an array of colors
 const randomColor = (colors) => {
 	return colors[Math.floor(Math.random() * colors.length)];
 };
@@ -22,14 +26,18 @@ window.addEventListener("resize", () => {
 	init();
 });
 
+// Cliking events
 window.addEventListener("click", () => {
 	init();
 });
 
 // For picking random color
 const colors = ["#ef5777", "#575fcf", "#4bcffa", "#34e7e4", "#0be881"];
+
+// gravity law's value
 let gravity = 0.2;
 let friction = 0.98;
+
 // Creating  Arcs via class
 class Circle {
 	constructor(x, y, dx, dy, radius, color) {
@@ -78,15 +86,16 @@ class Circle {
 
 let circles = [];
 
+// Making a lot of balls
 function init() {
 	circles = [];
 
 	for (let i = 0; i < 300; i++) {
-		var radius = randomNumFromRange(8, 20);
-		var x = randomNumFromRange(radius, cnvs.width - radius);
-		var y = randomNumFromRange(0, cnvs.height - radius);
-		var dx = randomNumFromRange(-3, 3);
-		var dy = randomNumFromRange(-2, 2);
+		let radius = randomNumFromRange(8, 20);
+		let x = randomNumFromRange(radius, cnvs.width - radius);
+		let y = randomNumFromRange(0, cnvs.height - radius);
+		let dx = randomNumFromRange(-3, 3);
+		let dy = randomNumFromRange(-2, 2);
 		circles.push(new Circle(x, y, dx, dy, radius, randomColor(colors)));
 	}
 }
